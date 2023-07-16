@@ -1,0 +1,52 @@
+{
+	"name": "@decentstake/eth2-beaconchain-utils",
+	"version": "1.0.0",
+	"description": "Ethereum BeaconChain Utils in Typescript",
+	"main": "index.ts",
+	"scripts": {
+		"build": "tsc src/index.ts --outDir dist",
+		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+	},
+	"keywords": [
+		"ethereum"
+	],
+	"author": "Lucas Grasso Ramos - DecentStake",
+	"license": "MIT",
+	"exports": {
+		".": "./dist/index.js",
+		"./classes": "./dist/classes/index.js",
+		"./interfaces": "./dist/interfaces/index.js",
+		"./constants": "./dist/constants/index.js",
+		"./utils": "./dist/utils/index.js",
+		"./package.json": "./package.json"
+	},
+	"dependencies": {
+		"@chainsafe/bls-keygen": "^0.4.0",
+		"@chainsafe/bls-keystore": "^3.0.0",
+		"@chainsafe/blst": "^0.2.9",
+		"@chainsafe/ssz": "^0.11.1",
+		"@commitlint/config-angular": "^17.6.6",
+		"@lodestar/config": "^1.9.1",
+		"@lodestar/params": "^1.9.1",
+		"@lodestar/state-transition": "^1.9.1",
+		"@lodestar/types": "^1.9.1",
+		"web3-validator": "^1.0.2"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.59.11",
+		"@typescript-eslint/parser": "^5.59.11",
+		"eslint": "^8.42.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-simple-import-sort": "^10.0.0",
+		"eslint-plugin-sonarjs": "^0.19.0",
+		"eslint-plugin-unicorn": "^47.0.0",
+		"husky": "^8.0.3",
+		"jest-diff": "^29.6.1",
+		"prettier": "^2.8.8",
+		"pretty-format": "^29.6.1",
+		"source-map-support": "^0.5.21",
+		"typescript": "^5.1.6"
+	}
+}
