@@ -1,5 +1,5 @@
 {
-	"name": "@decentstake/eth2-beaconchain-utils",
+	"name": "@decentstake/beaconchain-utils",
 	"version": "1.0.0",
 	"description": "Typescript Ethereum BeaconChain Utils",
 	"main": "index.ts",
@@ -11,7 +11,8 @@
 	"keywords": [
 		"ethereum",
 		"eth2",
-		"beaconchain"
+		"beaconchain",
+		"blockchain"
 	],
 	"author": "Lucas Grasso Ramos - DecentStake",
 	"license": "MIT",

@@ -11,10 +11,10 @@ export class ValidatorSigner {
 	 * Creates a new ValidatorSigner given a mnemonic.
 	 * If no mnemonic is provided, a random 24 word mnemonic will be generated.
 	 * @param {string} mnemonic The mnemonic to use for deriving the validator's secret key.
-	 * @param {NetworkName} network The network to use for signing the deposit data. Defaults to mainnet.
+	 * @param {NetworkName} network The network to use for signing the deposit data..
 	 * @throws Will throw an error if the mnemonic is invalid.
 	 */
-	constructor(mnemonic?: string, network: NetworkName = 'mainnet') {
+	constructor(network: NetworkName, mnemonic?: string) {
 		this.secretKeyProvider = new SecretKeyProvider(mnemonic);
 		this.network = network;
 	}

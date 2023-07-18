@@ -34,6 +34,15 @@ export class SecretKeyProvider {
 	}
 
 	/**
+	 * Derives a list of validators' secret keys and public keys from a list of validator indexes.
+	 * @param {Array<number>} validatorIndexes The indexes of the validators to derive the secret keys and public keys for.
+	 * @returns {Array<IValidator>} The derived validators' secret keys and public keys.
+	 */
+	deriveValidators(validatorIndexes: number[]): IValidator[] {
+		return validatorIndexes.map((validatorIndex) => this.deriveValidator(validatorIndex));
+	}
+
+	/**
 	 * Generates keystores for the given validator indexes.
 	 * @param {string} password The password to encrypt the keystores with.
 	 * @param {Array<number>} validatorIndexes The indexes of the validators to generate keystores for.
