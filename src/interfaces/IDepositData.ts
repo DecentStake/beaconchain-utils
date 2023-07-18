@@ -19,8 +19,11 @@ export interface IPackedDepositData {
 }
 
 export interface IDepositDataSignature {
+	pubkey: Uint8Array;
+	withdrawal_credential: Uint8Array;
 	signature: Uint8Array;
 	deposit_data_root: Uint8Array;
 	deposit_message_root: Uint8Array;
 	fork_version: Uint8Array;
+	network: NetworkName;
 }

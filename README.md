@@ -1,3 +1,5 @@
 # Eth2-BeaconChain-Utils
 
-Internal eth2 beacon chain utilities package.
+⚠️ This package is intended for internal use ⚠️  
+
+This package contains typescript utilities for working with the Eth2 Beacon Chain, wrapping around [@Lodestar](https://github.com/ChainSafe/lodestar) and [@Chainsafe](https://github.com/ChainSafe) packages.

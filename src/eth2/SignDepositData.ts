@@ -10,15 +10,15 @@ import { getDepositMessage } from '../utils/signing';
  * @param {Uint8Array} pubkey The validator's public key.
  * @param {Uint8Array} withdrawal_credential The validator's withdrawal credential.
  * @param {SecretKey} secretKey The validator's secret key.
+ * @param {NetworkName} network The network to use for signing the deposit data. Defaults to mainnet.
  * @returns {DepositDataSignature} The signature and deposit data root as an object.
  */
 export async function SignDepositData(
 	pubkey: Uint8Array,
-	withdrawal_credential: Uint8Array,
 	secretKey: SecretKey,
+	withdrawal_credential: Uint8Array,
 	network: NetworkName = 'mainnet',
 ): Promise<IDepositDataSignature> {
-	const { config } = await importDynamic('@lodestar/config/default');
 	const { DOMAIN_DEPOSIT } = await importDynamic('@lodestar/params');
 	const { ZERO_HASH, computeDomain, computeSigningRoot } = await importDynamic(
 		'@lodestar/state-transition',
@@ -47,9 +47,12 @@ export async function SignDepositData(
 	const depositDataRoot = ssz.phase0.DepositData.hashTreeRoot(depositData);
 
 	return {
+		pubkey,
+		withdrawal_credential,
 		signature: depositData.signature,
 		deposit_data_root: depositDataRoot,
 		deposit_message_root: depositMessageRoot,
-		fork_version: config.GENESIS_FORK_VERSION,
-	} as IDepositDataSignature;
+		fork_version: CHAIN_CONFIGS[network].GENESIS_FORK_VERSION,
+		network,
+	};
 }

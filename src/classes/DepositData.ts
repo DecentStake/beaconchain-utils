@@ -1,6 +1,6 @@
-import type { NetworkName } from '../interfaces';
+import type { IDepositData, IPackedDepositData, NetworkName } from '../interfaces';
 
-export class DepositData {
+export class DepositData implements IDepositData {
 	pubkey: string;
 
 	withdrawal_credentials: string;
@@ -38,7 +38,7 @@ export class DepositData {
 	}
 }
 
-export class PackedDepositData {
+export class PackedDepositData implements IPackedDepositData {
 	pubkeys: string;
 
 	withdrawal_credential: string;

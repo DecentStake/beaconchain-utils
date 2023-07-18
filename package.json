@@ -1,7 +1,7 @@
 {
 	"name": "@decentstake/eth2-beaconchain-utils",
 	"version": "1.0.0",
-	"description": "Ethereum BeaconChain Utils in Typescript",
+	"description": "Typescript Ethereum BeaconChain Utils",
 	"main": "index.ts",
 	"scripts": {
 		"build": "tsc src/index.ts --outDir dist",
@@ -9,7 +9,9 @@
 		"prepare": "husky install"
 	},
 	"keywords": [
-		"ethereum"
+		"ethereum",
+		"eth2",
+		"beaconchain"
 	],
 	"author": "Lucas Grasso Ramos - DecentStake",
 	"license": "MIT",
@@ -31,6 +33,7 @@
 		"@lodestar/params": "^1.9.1",
 		"@lodestar/state-transition": "^1.9.1",
 		"@lodestar/types": "^1.9.1",
+		"bip39": "^3.1.0",
 		"web3-validator": "^1.0.2"
 	},
 	"devDependencies": {
