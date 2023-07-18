@@ -70,7 +70,10 @@ const secretKeyProvider = new SecretKeyProvider();
 const secretKeyProvider = new SecretKeyProvider(mnemonic);
 
 // Generate keystores for a list of validator indices.
-const keystoreObject: IKeystoreObject = await secretKeyProvider.generateKeystores(validatorIndexes, password);
+const keystoreObject: IKeystoreObject = await secretKeyProvider.generateKeystores(
+    validatorIndexes,
+    password
+);
 const keystores: Array<IKeystore> = keystoreObject.keystores;
 const passwords: string = keystoreObject.password;
 
