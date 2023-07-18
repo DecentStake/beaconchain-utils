@@ -12,7 +12,11 @@ Sign and generate a DepositData object with a BIP39 mnemonic:
 import { generateDepositData, generatePackedDepositData } from '@decentstake/beaconchain-utils';
 import { ValidatorSigner } from '@decentstake/beaconchain-utils/classes';
 import { parseAddressToBLS } from '@decentstake/beaconchain-utils/utils';
-import type { IDepositData, IDepositDataSignature, IPackedDepositData } from '@decentstake/beaconchain-utils/interfaces';
+import type {
+    IDepositData,
+    IDepositDataSignature,
+    IPackedDepositData
+} from '@decentstake/beaconchain-utils/interfaces';
 
 const mnemonic: string = 'sister protect...'
 const withdrawal_credential: Uint8Array = parseAddressToBLS('0x8FB40436758Ea9e1a8317f54293Af74be02faFf0');
@@ -26,10 +30,16 @@ const signer = new ValidatorSigner('mainnet');
 const signer = new ValidatorSigner('goerli', mnemonic);
 
 // Signs data for generating a  deposit data object.
-const depositDataSignature: IDepositDataSignature = await signer.signDepositData(withdrawal_credential, validatorIndex);
+const depositDataSignature: IDepositDataSignature = await signer.signDepositData(
+    withdrawal_credential,
+    validatorIndex
+);
 
 // Batched version of `signDepositData`.
-const depositDataSignatures: Array<IDepositDataSignature> = await signer.signDepositDataBatch(withdrawal_credential, validatorIndexes);
+const depositDataSignatures: Array<IDepositDataSignature> = await signer.signDepositDataBatch(
+    withdrawal_credential,
+    validatorIndexes
+);
 
 
 // Generates a deposit data object.
