@@ -17,16 +17,7 @@ export class DepositData implements IDepositData {
 
 	network_name: NetworkName;
 
-	constructor(data: {
-		pubkey: string;
-		withdrawal_credentials: string;
-		amount: number;
-		signature: string;
-		deposit_message_root: string;
-		deposit_data_root: string;
-		fork_version: string;
-		network_name: NetworkName;
-	}) {
+	constructor(data: IDepositData) {
 		this.pubkey = data.pubkey;
 		this.withdrawal_credentials = data.withdrawal_credentials;
 		this.amount = data.amount;
