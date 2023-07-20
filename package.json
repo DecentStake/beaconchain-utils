@@ -22,6 +22,7 @@
 		"./interfaces": "./dist/interfaces/index.js",
 		"./constants": "./dist/constants/index.js",
 		"./utils": "./dist/utils/index.js",
+		"./errors": "./dist/errors/index.js",
 		"./package.json": "./package.json"
 	},
 	"dependencies": {
