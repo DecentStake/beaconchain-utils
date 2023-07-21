@@ -18,11 +18,9 @@
 	"license": "MIT",
 	"exports": {
 		".": "./dist/index.js",
-		"./classes": "./dist/classes/index.js",
 		"./interfaces": "./dist/interfaces/index.js",
 		"./constants": "./dist/constants/index.js",
 		"./utils": "./dist/utils/index.js",
-		"./errors": "./dist/errors/index.js",
 		"./package.json": "./package.json"
 	},
 	"dependencies": {
@@ -44,6 +42,7 @@
 		"eslint": "^8.42.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-jsdoc": "^46.4.4",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-simple-import-sort": "^10.0.0",
 		"eslint-plugin-sonarjs": "^0.19.0",

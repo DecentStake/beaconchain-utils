@@ -1,2 +1,3 @@
 export * from './DepositData';
-export * from './ValidatorSigner';
+export * from './SecretProvider';
+export * from './Validator';

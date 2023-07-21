@@ -1,4 +1,4 @@
-import type { NetworkName } from './NetworkNames.js';
+import type { NetworkName } from '.';
 
 export interface IDepositData {
 	pubkey: string;

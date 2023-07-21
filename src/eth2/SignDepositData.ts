@@ -1,4 +1,5 @@
 import type { SecretKey } from '@chainsafe/blst';
+import { PublicKey, Signature, verify } from '@chainsafe/blst';
 
 import { CHAIN_CONFIGS } from '../constants';
 import type { IDepositDataSignature, NetworkName } from '../interfaces';
@@ -7,13 +8,13 @@ import { getDepositMessage } from '../utils/signing';
 
 /**
  * Signs a deposit data object.
- * @param {Uint8Array} pubkey The validator's public key.
- * @param {Uint8Array} withdrawal_credential The validator's withdrawal credential.
- * @param {SecretKey} secretKey The validator's secret key.
- * @param {NetworkName} network The network to use for signing the deposit data. Defaults to mainnet.
- * @returns {DepositDataSignature} The signature and deposit data root as an object.
+ * @param pubkey The validator's public key.
+ * @param secretKey The validator's secret key.
+ * @param withdrawal_credential The validator's withdrawal credential.
+ * @param network The network to use for signing the deposit data. Defaults to mainnet.
+ * @returns The signature and deposit data root as an object.
  */
-export async function SignDepositData(
+export async function signDepositData(
 	pubkey: Uint8Array,
 	secretKey: SecretKey,
 	withdrawal_credential: Uint8Array,
@@ -44,6 +45,13 @@ export async function SignDepositData(
 		...depositMessage,
 		signature: secretKey.sign(signingRoot).toBytes(),
 	};
+
+	if (
+		!verify(signingRoot, PublicKey.fromBytes(pubkey), Signature.fromBytes(depositData.signature))
+	) {
+		throw new Error('Invalid signature');
+	}
+
 	const depositDataRoot = ssz.phase0.DepositData.hashTreeRoot(depositData);
 
 	return {

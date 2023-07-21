@@ -5,9 +5,9 @@ import { appendUint8Arrays } from '../utils';
 
 /**
  * Generates a packed deposit data for a given deposit data signatures.
- * @param {IDepositDataSignature[]} depositDataSignatures Signed deposit data objects.
- * @returns {PackedDepositData} An object containing the deposit data for the given validator indexes, ready for use in the BatchDeposit contract.
- * @notice We return DepositData as an object with string properties, rather than a Uint8Array, for ease of use in back-front communication.
+ * DepositData is an object with string properties, rather than a Uint8Array, for ease of use in back-front communication.
+ * @param depositDataSignatures Signed deposit data objects.
+ * @returns An object containing the deposit data for the given validator indexes, ready for use in the BatchDeposit contract.
  */
 export function generatePackedDepositData(
 	depositDataSignatures: IDepositDataSignature[],
@@ -32,8 +32,8 @@ export function generatePackedDepositData(
 
 /**
  * Generates deposit data for a given deposit data signatures.
- * @param {IDepositDataSignature[]} depositDataSignatures Signed deposit data objects.
- * @returns {DepositData[]} An array of depositData objects, similar to what deposit_cli outputs.
+ * @param depositDataSignatures Signed deposit data objects.
+ * @returns An array of depositData objects, similar to what deposit_cli outputs.
  */
 export function generateDepositData(
 	depositDataSignatures: IDepositDataSignature[],

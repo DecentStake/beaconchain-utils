@@ -5,7 +5,7 @@ module.exports = {
 		es6: true,
 		node: true,
 	},
-	ignorePatterns: ['.eslintrc.js'],
+	ignorePatterns: ['.eslintrc.js', 'dist/*'],
 	parserOptions: {
 		ecmaVersion: 2020,
 		project: './tsconfig.eslint.json',
@@ -21,6 +21,7 @@ module.exports = {
 		'plugin:unicorn/recommended',
 		'plugin:import/recommended',
 		'plugin:sonarjs/recommended',
+		'plugin:jsdoc/recommended-typescript-error'
 	],
 	plugins: [
 		'@typescript-eslint',
@@ -29,6 +30,7 @@ module.exports = {
 		'import',
 		'unicorn',
 		'sonarjs',
+		'jsdoc'
 	],
 	rules: {
 		"unicorn/filename-case": [
