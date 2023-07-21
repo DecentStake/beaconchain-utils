@@ -1,6 +1,10 @@
+husky/
 node_modules/
 .lintstagedrc
 .prettierrc
 .eslintrc.js
 .editorconfig
 .commitlintrc.json
+tsconfig.build.json
+tsconfig.eslint.json
+tsconfig.json
