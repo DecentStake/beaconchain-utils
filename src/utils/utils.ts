@@ -1,8 +1,8 @@
 import { fromHexString as b } from '@chainsafe/ssz';
 import { isAddress } from 'web3-validator';
 
+import { Chains } from '../constants';
 import type { NetworkName } from '../interfaces';
-import { Chains } from '../interfaces';
 
 /**
  * Utility function to append two Uint8Arrays.

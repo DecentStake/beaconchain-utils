@@ -10,3 +10,8 @@ export const CHAIN_CONFIGS = {
 		GENESIS_VALIDATORS_ROOT: b('043db0d9a83813551ee2f33450d23797757d430911a9320530ad8a0eabc43efb'),
 	},
 };
+
+export enum Chains {
+	mainnet = 1,
+	goerli = 5,
+}

@@ -1,7 +1,4 @@
-export enum Chains {
-	mainnet = 1,
-	goerli = 5,
-}
+import type { Chains } from '../constants';
 
 export type NetworkName = keyof typeof Chains;
 
