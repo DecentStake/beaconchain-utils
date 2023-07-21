@@ -19,6 +19,6 @@
 		"module": "CommonJS",
 		"moduleResolution": "Node16",
 		"strict": true,
-		"strictNullChecks": true
+		"strictNullChecks": true,
 	}
 }

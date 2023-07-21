@@ -1,1 +1,6 @@
 node_modules/
+.lintstagedrc
+.prettierrc
+.eslintrc.js
+.editorconfig
+.commitlintrc.json

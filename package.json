@@ -2,9 +2,10 @@
 	"name": "@decentstake/beaconchain-utils",
 	"version": "1.0.0",
 	"description": "Typescript Ethereum BeaconChain Utils",
-	"main": "index.ts",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "tsc src/index.ts --outDir dist",
+		"build": "tsc src/index.ts --declaration  --outDir dist",
 		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
 		"prepare": "husky install"
 	},
