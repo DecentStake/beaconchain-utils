@@ -25,7 +25,7 @@ export const appendUint8Arrays = (array1: Uint8Array, array2: Uint8Array) => {
  */
 export const parseAddressToBLS = (address: string): Uint8Array => {
 	if (!isAddress(address)) {
-		throw new Error('Address is not checksummed.');
+		throw new Error('Address is not checksummed');
 	}
 
 	return b(`0x010000000000000000000000${address.replace('0x', '')}`);

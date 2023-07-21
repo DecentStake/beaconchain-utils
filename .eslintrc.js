@@ -5,7 +5,7 @@ module.exports = {
 		es6: true,
 		node: true,
 	},
-	ignorePatterns: ['.eslintrc.js', 'dist/*'],
+	ignorePatterns: ['.eslintrc.js', 'lib/*', 'jest.config.js'],
 	parserOptions: {
 		ecmaVersion: 2020,
 		project: './tsconfig.eslint.json',
