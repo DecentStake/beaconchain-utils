@@ -96,6 +96,15 @@ export class SecretProvider {
 	}
 
 	/**
+	 * Executes a callback function with the secret key as a parameter. Useful for exporting the secret key to a KMS.
+	 * @param callBack The callback function to execute with the secret key as a parameter.
+	 * @returns void.
+	 */
+	exportSecretKey(callBack: (secretKey: Uint8Array) => void): void | Promise<void> {
+		return callBack(this.secretKey);
+	}
+
+	/**
 	 * Gets the EIP-2334 path for the given validator index
 	 * @param validatorIndex The index of the validator to get the EIP-2334 path for.
 	 * @returns TheEIP-2334 path for the given validator index.
