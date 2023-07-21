@@ -9,96 +9,107 @@ This package contains typescript utilities for working with the Eth2 Beacon Chai
 Sign and generate a DepositData object with a BIP39 mnemonic:
 
 ```typescript
-import { generateDepositData, generatePackedDepositData } from '@decentstake/beaconchain-utils';
-import { ValidatorSigner } from '@decentstake/beaconchain-utils/classes';
+import { generateDepositData, generatePackedDepositData, Validator, SecretProvider } from '@decentstake/beaconchain-utils';
 import { parseAddressToBLS } from '@decentstake/beaconchain-utils/utils';
 import type {
-    IDepositData,
-    IDepositDataSignature,
-    IPackedDepositData
+	IDepositData,
+	IDepositDataSignature,
+	IPackedDepositData
 } from '@decentstake/beaconchain-utils/interfaces';
+
+import { Chains } from '@decentstake/beaconchain-utils/constants';
 
 const mnemonic: string = 'sister protect...'
 const withdrawal_credential: Uint8Array = parseAddressToBLS('0x8FB40436758Ea9e1a8317f54293Af74be02faFf0');
-const validatorIndex: number = 3291;
-const validatorIndexes: Array<number> = [3291, 1];
+const validatorIndex: number = 0;
+let secretKey;
 
 // Create a new mnemonic.
-const signer = new ValidatorSigner('mainnet');
+const secretProvider = new SecretProvider();
 
 // Or use an existing mnemonic.
-const signer = new ValidatorSigner('goerli', mnemonic);
+const secretProvider = new SecretProvider(mnemonic);
+
+await secretProvider.exportSecretKey((sk: Uint8Array) => {
+	secretKey = sk;
+});
+const validator = new Validator(secretKey, validatorIndex, Chains.mainnet);
 
 // Signs data for generating a  deposit data object.
-const depositDataSignature: IDepositDataSignature = await signer.signDepositData(
-    withdrawal_credential,
-    validatorIndex
+const depositDataSignature: IDepositDataSignature = await validator.signDepositData(
+	withdrawal_credential,
 );
-
-// Batched version of `signDepositData`.
-const depositDataSignatures: Array<IDepositDataSignature> = await signer.signDepositDataBatch(
-    withdrawal_credential,
-    validatorIndexes
-);
-
 
 // Generates a deposit data object.
-const depositData: IDepositData = generateDepositData([depositDataSignature]);
-const depositData: IDepositData = generateDepositData(depositDataSignatures);
+const depositData: IDepositData[] = generateDepositData([depositDataSignature]);
 
 // `packed` version of `generateDepositData`.
 const packedDepositData: IPackedDepositData = generatePackedDepositData([depositDataSignature]);
-const packedDepositData: IPackedDepositData = generatePackedDepositData(depositDataSignatures);
 
 ```
 
 Generates EIP 2335 keystores for a list of validator indices:
+Generating 100 keystores takes about 90 seconds. May vary depending on your machine.
 
 ```typescript
-import { SecretKeyProvider } from '@decentstake/beaconchain-utils/classes';
+import { SecretProvider } from '@decentstake/beaconchain-utils';
 import type { IKeystore } from '@chainsafe/bls-keystore';
-import type { IKeystoreObject } from '@decentstake/beaconchain-utils/interfaces'
+import type { IKeystoreObject } from '@decentstake/beaconchain-utils/interfaces';
 
-const password: string = "eth1234"; 
-const mnemonic: string = 'sister protect...'
-const validatorIndexes: Array<number> = [3291, 1];
+const password: string = "eth1234";
+const mnemonic: string = 'sister protect...';
+const startIndex = 0;
+const numberOfValidators = 100; //ValidatorIndexes 0-99
 
 // Create a new mnemonic.
-const secretKeyProvider = new SecretKeyProvider();
+const secretProvider = new SecretProvider();
 
 // Or use an existing mnemonic.
-const secretKeyProvider = new SecretKeyProvider(mnemonic);
+const secretProvider = new SecretProvider(mnemonic);
 
-// Generate keystores for a list of validator indices.
-const keystoreObject: IKeystoreObject = await secretKeyProvider.generateKeystores(
-    validatorIndexes,
-    password
+const keystoreObject: IKeystoreObject = await secretProvider.generateKeystores(
+	startIndex,
+	numberOfValidators,
+	password
 );
+
 const keystores: Array<IKeystore> = keystoreObject.keystores;
-const passwords: string = keystoreObject.password;
+const psw: string = keystoreObject.password;
+
+//OR export keystore from a single validator
+//...
+const validator = new Validator(secretKey, validatorIndex, Chains.mainnet);
+const keystore: IKeystore = await validator.generateKeystore(password);
 
 ```
 
 Derive a validator public and secret key from a BIP39 mnemonic:
 
 ```typescript
-import { SecretKeyProvider } from '@decentstake/beaconchain-utils';
-import type { IValidator } from '@decentstake/beaconchain-utils/interfaces'
+import { SecretProvider } from '@decentstake/beaconchain-utils';
+import type { IValidatorKeyPair } from '@decentstake/beaconchain-utils/interfaces';
+import { fromHexString } from '@chainsafe/ssz';
 
-const mnemonic: string = 'sister protect...'
-const validatorIndex: number = 3291;
-const validatorIndexes: Array<number> = [3291, 1];
+const mnemonic: string = 'sister protect...';
+const startIndex = 0;
+const numberOfValidators = 100; //ValidatorIndexes 0-99
 
 // Create a new mnemonic.
-const secretKeyProvider = new SecretKeyProvider();
+const secretProvider = new SecretProvider();
 
 // Or use an existing mnemonic.
-const secretKeyProvider = new SecretKeyProvider(mnemonic);
+const secretProvider = new SecretProvider(mnemonic);
 
-// Derive a validator public and secret key from a BIP39 mnemonic.
-const validator: IValidator = await secretKeyProvider.deriveValidator(validatorIndex);
+//Derive a single validator.
+const validator0KeyPair: IValidatorKeyPair = secretProvider.deriveValidator(0);
+const validator0secretKey = validator0KeyPair.secretKey;
+const validator0pubkey = validator0KeyPair.pubkey;
 
-// Batched version of `deriveValidator`.
-const validators: Array<IValidator> = await secretKeyProvider.deriveValidators(validatorIndexes);
+// OR Derive multiple validators.
+// The nth validator has a secretKey secretKey[n] and a public key pubkey[n]
+// Values are returned as hexstrings.
+const { pubkeys, secretKeys } = secretProvider.exportValidators(startIndex, numberOfValidators);
+const validator0secretKey = fromHexString(secretKeys[0]);
+const validator0pubkey = fromHexString(pubkeys[0]);
 
 ```
