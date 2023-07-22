@@ -9,3 +9,4 @@ husky/
 tsconfig.build.json
 tsconfig.eslint.json
 tsconfig.json
+.npmrc
