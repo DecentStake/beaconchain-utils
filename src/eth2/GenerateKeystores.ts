@@ -1,6 +1,7 @@
 import type { IKeystore } from '@chainsafe/bls-keystore';
 import { Keystore } from '@chainsafe/bls-keystore';
 
+import { arrayFromRange } from '../utils';
 import { deriveValidator } from './DeriveValidator';
 
 /**
@@ -17,10 +18,7 @@ export async function generateKeystores(
 	password: string | Uint8Array,
 	masterSecretKey: Uint8Array,
 ): Promise<IKeystore[]> {
-	const validatorIndexes = Array.from(
-		{ length: numberOfValidators },
-		(_, index) => startIndex + index,
-	);
+	const validatorIndexes = arrayFromRange(startIndex, numberOfValidators);
 	const keystorePromises = validatorIndexes.map(async (validatorIndex) => {
 		const { secretKey, pubkey } = deriveValidator(masterSecretKey, validatorIndex);
 

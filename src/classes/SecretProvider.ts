@@ -4,6 +4,7 @@ import { generateMnemonic, validateMnemonic } from 'bip39';
 
 import { deriveValidator, generateKeystores } from '../eth2';
 import type { IKeystoreObject, IValidatorKeyPair, IValidatorKeysPath } from '../interfaces';
+import { arrayFromRange } from '../utils';
 
 export class SecretProvider {
 	private readonly mnemonic: string;
@@ -44,10 +45,7 @@ export class SecretProvider {
 		startIndex: number,
 		numberOfValidators: number,
 	): { pubkeys: string[]; secretKeys: string[] } {
-		const validatorIndexes = Array.from(
-			{ length: numberOfValidators },
-			(_, index) => startIndex + index,
-		);
+		const validatorIndexes = arrayFromRange(startIndex, numberOfValidators);
 
 		const pubkeys: string[] = [];
 		const secretKeys: string[] = [];
