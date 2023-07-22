@@ -24,6 +24,7 @@
 		".": "./lib/index.js",
 		"./interfaces": "./lib/interfaces/index.js",
 		"./constants": "./lib/constants/index.js",
+		"./chainParams": "./lib/chainParams/index.js",
 		"./utils": "./lib/utils/index.js",
 		"./package.json": "./package.json"
 	},
