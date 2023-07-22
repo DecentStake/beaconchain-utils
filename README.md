@@ -1,6 +1,5 @@
 # Eth2 BeaconChain Utils
-
-⚠️ This package is intended for internal use ⚠️  
+[![Module type: CJS](https://img.shields.io/badge/module%20type-cjs-brightgreen)](https://github.com/voxpelli/badges-cjs-esm) ![node 18.x](https://camo.githubusercontent.com/ad21f4a73ca80151771ccbafeea2a7622152ea07cecbd9c92cd7c08137e005a1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6f64652d31382e782d677265656e)
 
 This package contains typescript utilities for working with the Eth2 Beacon Chain, wrapping around [@Lodestar](https://github.com/ChainSafe/lodestar) and [@Chainsafe](https://github.com/ChainSafe) packages.
 
