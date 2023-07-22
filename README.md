@@ -9,15 +9,14 @@ This package contains typescript utilities for working with the Eth2 Beacon Chai
 Sign and generate a DepositData object with a BIP39 mnemonic:
 
 ```typescript
-import { generateDepositData, generatePackedDepositData, Validator, SecretProvider } from '@decentstake/beaconchain-utils';
-import { parseAddressToBLS } from '@decentstake/beaconchain-utils/utils';
+import { generateDepositData, generatePackedDepositData, parseAddressToBLS, Validator, SecretProvider} from '@decentstake/beaconchain-utils';
 import type {
 	IDepositData,
 	IDepositDataSignature,
 	IPackedDepositData
 } from '@decentstake/beaconchain-utils/interfaces';
 
-import { Chains } from '@decentstake/beaconchain-utils/constants';
+import { Chains } from '@decentstake/beaconchain-utils/chainParams';
 
 const mnemonic: string = 'sister protect...'
 const withdrawal_credential: Uint8Array = parseAddressToBLS('0x8FB40436758Ea9e1a8317f54293Af74be02faFf0');

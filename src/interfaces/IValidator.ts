@@ -1,6 +1,6 @@
 import type { SecretKey } from '@chainsafe/blst';
 
-import type { Chains } from '../constants';
+import type { Chains } from '../chainParams';
 
 export interface IValidator {
 	chainId: Chains;

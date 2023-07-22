@@ -1,10 +1,15 @@
 import type { SecretKey } from '@chainsafe/blst';
 import { PublicKey, Signature, verify } from '@chainsafe/blst';
 
-import { CHAIN_CONFIGS } from '../constants';
+import { CHAIN_CONFIGS } from '../chainParams';
 import type { IDepositDataSignature, NetworkName } from '../interfaces';
 import { importDynamic } from '../utils';
-import { getDepositMessage } from '../utils/signing';
+
+export const getDepositMessage = (pubkey: Uint8Array, withdrawal_credential: Uint8Array) => ({
+	pubkey,
+	withdrawalCredentials: withdrawal_credential,
+	amount: 32e9,
+});
 
 /**
  * Signs a deposit data object.

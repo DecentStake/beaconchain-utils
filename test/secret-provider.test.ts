@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 import { PublicKey } from '@chainsafe/blst';
 import { fromHexString as b } from '@chainsafe/ssz';
 import { validateMnemonic } from 'bip39';
 
 import { SecretProvider, Validator } from '../src';
-import { Chains } from '../src/constants';
+import { Chains } from '../src/chainParams';
 
 describe('SecretProvider', () => {
 	let secretProvider: SecretProvider;
@@ -21,7 +22,6 @@ describe('SecretProvider', () => {
 
 	it('should be able to instance a new SecretProvider with a mnemonic', () => {
 		const mnemonic =
-			// eslint-disable-next-line max-len
 			'sister protect peanut hill ready work profit fit wish want small inflict flip member tail between sick setup bright duck morning sell paper worry';
 		const secretProviderWithMnemonic = new SecretProvider(mnemonic);
 		expect(secretProviderWithMnemonic).toBeDefined();
@@ -29,7 +29,6 @@ describe('SecretProvider', () => {
 
 	it('should throw if the mnemonic is invalid', () => {
 		const mnemonic =
-			// eslint-disable-next-line max-len
 			'sister peanut hill ready work profit fit wish want small inflict flip member tail between sick setup bright duck morning sell paper worry';
 		expect(() => new SecretProvider(mnemonic)).toThrow('Invalid mnemonic');
 	});

@@ -1,6 +1,6 @@
 import { toHexString } from '@chainsafe/ssz';
 
-import { parseAddressToBLS } from '../src/utils';
+import { parseAddressToBLS } from '../src/';
 
 describe('ParseAddressToBLS', () => {
 	it('should parse address to BLS', () => {

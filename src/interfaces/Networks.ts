@@ -1,4 +1,4 @@
-import type { Chains } from '../constants';
+import type { Chains } from '../chainParams';
 
 export type NetworkName = keyof typeof Chains;
 
