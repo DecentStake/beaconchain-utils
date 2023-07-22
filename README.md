@@ -54,7 +54,7 @@ const packedDepositData: IPackedDepositData = generatePackedDepositData([deposit
 
 ```
 
-Generates EIP 2335 keystores for a list of validator indices:
+Generates EIP 2335 keystores for a list of validator indices:  
 Generating 100 keystores takes about 90 seconds. May vary depending on your machine.
 
 ```typescript
