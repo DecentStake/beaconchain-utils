@@ -1,18 +1,4 @@
 /**
- * Utility function to append two Uint8Arrays.
- * @param array1 The first Uint8Array.
- * @param array2 The second Uint8Array.
- * @returns The concatenated Uint8Array.
- */
-export const appendUint8Arrays = (array1: Uint8Array, array2: Uint8Array) => {
-	const tmp = new Uint8Array(array1.length + array2.length);
-	tmp.set(array1, 0);
-	tmp.set(array2, array1.length);
-
-	return tmp;
-};
-
-/**
  * Utility function to convert a start index and a range to an array of numbers.
  * @param start The start index.
  * @param n The range. Will generate an array of numbers from start to start + n.

@@ -91,9 +91,8 @@ const keystore: IKeystore = await validator.generateKeystore(password);
 Derive a validator public and secret key from a BIP39 mnemonic:
 
 ```typescript
-import { SecretProvider } from '@decentstake/beaconchain-utils';
+import { SecretProvider, hexStringToBytes } from '@decentstake/beaconchain-utils';
 import type { IValidatorKeyPair } from '@decentstake/beaconchain-utils/interfaces';
-import { fromHexString } from '@chainsafe/ssz';
 
 const mnemonic: string = 'sister protect...';
 const startIndex = 0;
@@ -114,7 +113,7 @@ const validator0pubkey = validator0KeyPair.pubkey;
 // The nth validator has a secretKey secretKey[n] and a public key pubkey[n]
 // Values are returned as hexstrings.
 const { pubkeys, secretKeys } = secretProvider.exportValidators(startIndex, numberOfValidators);
-const validator0secretKey = fromHexString(secretKeys[0]);
-const validator0pubkey = fromHexString(pubkeys[0]);
+const validator0secretKey = hexStringToBytes(secretKeys[0]);
+const validator0pubkey = hexStringToBytes(pubkeys[0]);
 
 ```

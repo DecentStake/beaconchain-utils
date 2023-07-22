@@ -1,11 +1,9 @@
 import { deriveKeyFromMnemonic, eth2ValidatorPaths } from '@chainsafe/bls-keygen';
-import { toHexString } from '@chainsafe/ssz';
 import { generateMnemonic, validateMnemonic } from 'bip39';
 
-import { deriveValidator, generateKeystores } from '../eth2';
+import { deriveValidator, generateKeystores, hexStringFromBytes } from '../';
 import type { IKeystoreObject, IValidatorKeyPair, IValidatorKeysPath } from '../interfaces';
 import { arrayFromRange } from '../utils';
-
 export class SecretProvider {
 	private readonly mnemonic: string;
 
@@ -52,8 +50,8 @@ export class SecretProvider {
 
 		for (const validatorIndex of validatorIndexes) {
 			const { pubkey, secretKey } = this.deriveValidator(validatorIndex);
-			pubkeys.push(toHexString(pubkey));
-			secretKeys.push(toHexString(secretKey.toBytes()));
+			pubkeys.push(hexStringFromBytes(pubkey));
+			secretKeys.push(hexStringFromBytes(secretKey.toBytes()));
 		}
 
 		return {

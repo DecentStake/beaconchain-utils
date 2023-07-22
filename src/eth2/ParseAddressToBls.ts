@@ -1,5 +1,6 @@
-import { fromHexString as b } from '@chainsafe/ssz';
 import { isAddress } from 'web3-validator';
+
+import { hexStringToBytes as b } from '../TypedArrayUtils';
 
 /**
  * Parse an Ethereum address to a BLS execution layer withdrawal credential.

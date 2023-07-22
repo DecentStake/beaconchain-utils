@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
 import { PublicKey } from '@chainsafe/blst';
-import { fromHexString as b } from '@chainsafe/ssz';
 import { validateMnemonic } from 'bip39';
 
-import { SecretProvider, Validator } from '../src';
+import { hexStringToBytes as b, SecretProvider, Validator } from '../src';
 import { Chains } from '../src/chainParams';
 
 describe('SecretProvider', () => {

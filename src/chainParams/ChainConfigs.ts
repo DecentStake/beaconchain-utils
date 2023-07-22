@@ -1,4 +1,4 @@
-import { fromHexString as b } from '@chainsafe/ssz';
+import { hexStringToBytes as b } from '../TypedArrayUtils';
 
 export const CHAIN_CONFIGS = {
 	mainnet: {
