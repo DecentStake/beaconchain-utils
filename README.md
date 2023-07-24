@@ -27,7 +27,6 @@ import { Chains } from '@decentstake/beaconchain-utils/chainParams';
 const mnemonic: string = 'sister protect...'
 const withdrawal_credential: Uint8Array = parseAddressToBLS('0x8FB40436758Ea9e1a8317f54293Af74be02faFf0');
 const validatorIndex: number = 0;
-let secretKey;
 
 // Create a new mnemonic.
 const secretProvider = new SecretProvider();
@@ -35,9 +34,7 @@ const secretProvider = new SecretProvider();
 // Or use an existing mnemonic.
 const secretProvider = new SecretProvider(mnemonic);
 
-await secretProvider.exportSecretKey((sk: Uint8Array) => {
-	secretKey = sk;
-});
+const secretKey = secretProvider.deriveValidator(validatorIndex).secretKey;
 const validator = new Validator(secretKey, validatorIndex, Chains.mainnet);
 
 // Signs data for generating a  deposit data object.
