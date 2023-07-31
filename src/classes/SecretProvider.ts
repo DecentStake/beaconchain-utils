@@ -87,7 +87,9 @@ export class SecretProvider {
 	 * @param callBack The callback function to execute with the mnemonic as a parameter.
 	 * @returns void.
 	 */
-	exportMnemonic(callBack: (mnemonic: string) => void): void | Promise<void> {
+	exportMnemonic(
+		callBack: ((mnemonic: string) => void) | ((mnemonic: string) => Promise<void>),
+	): void | Promise<void> {
 		return callBack(this.mnemonic);
 	}
 
@@ -96,7 +98,9 @@ export class SecretProvider {
 	 * @param callBack The callback function to execute with the secret key as a parameter.
 	 * @returns void.
 	 */
-	exportSecretKey(callBack: (secretKey: Uint8Array) => void): void | Promise<void> {
+	exportSecretKey(
+		callBack: ((secretKey: Uint8Array) => void) | ((secretKey: Uint8Array) => Promise<void>),
+	): void | Promise<void> {
 		return callBack(this.secretKey);
 	}
 
