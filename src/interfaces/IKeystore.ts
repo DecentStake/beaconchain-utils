@@ -47,14 +47,6 @@ export interface ICipherModule {
 	};
 	message: string;
 }
-export interface IAes128CtrCipherModule {
-	function: 'aes-128-ctr';
-	params: {
-		iv: string;
-	};
-	message: string;
-}
-
 export interface IKeystoreObject {
 	keystores: IKeystore[];
 	password: string;
