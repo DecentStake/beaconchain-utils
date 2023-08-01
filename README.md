@@ -55,8 +55,7 @@ Generating 100 keystores takes about 90 seconds. May vary depending on your mach
 
 ```typescript
 import { SecretProvider } from '@decentstake/beaconchain-utils';
-import type { IKeystore } from '@chainsafe/bls-keystore';
-import type { IKeystoreObject } from '@decentstake/beaconchain-utils/interfaces';
+import type { IKeystore, IKeystoreObject } from '@decentstake/beaconchain-utils/interfaces';
 
 const password: string = "eth1234";
 const mnemonic: string = 'sister protect...';

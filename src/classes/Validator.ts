@@ -1,11 +1,10 @@
-import type { IKeystore } from '@chainsafe/bls-keystore';
 import { Keystore } from '@chainsafe/bls-keystore';
 import { SecretKey } from '@chainsafe/blst';
 
 import type { Chains } from '../chainParams';
 import { getChainName } from '../chainParams';
 import { signDepositData } from '../eth2/SignDepositData';
-import type { IDepositDataSignature, INetwork, IValidator } from '../interfaces';
+import type { IDepositDataSignature, IKeystore, INetwork, IValidator } from '../interfaces';
 
 export class Validator implements IValidator {
 	chainId: Chains;

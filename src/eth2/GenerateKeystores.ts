@@ -1,6 +1,6 @@
-import type { IKeystore } from '@chainsafe/bls-keystore';
 import { Keystore } from '@chainsafe/bls-keystore';
 
+import type { IKeystore } from '../interfaces';
 import { arrayFromRange } from '../utils';
 import { deriveValidator } from './DeriveValidator';
 
