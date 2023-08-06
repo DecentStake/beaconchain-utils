@@ -9,20 +9,14 @@ jobs:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
 
-      # Setup pnpm for faster install
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      # Setup Node.js, and cache dependencies with pnpm
+      # Setup Node.js
       - uses: actions/setup-node@v3
         with:
           node-version: "16.x"
-          cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
       # Install Dependencies
-      - run: pnpm install
+      - run: npm ci
 
       # Publish to npm
       - run: npm publish
