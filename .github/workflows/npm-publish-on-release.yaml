@@ -11,15 +11,15 @@ jobs:
 
       # Setup pnpm for faster install
       - uses: pnpm/action-setup@v2
-      with:
-        version: 8
+        with:
+          version: 8
 
       # Setup Node.js, and cache dependencies with pnpm
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "16.x"
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
 
       # Install Dependencies
       - run: pnpm install
