@@ -1,0 +1,30 @@
+name: Publish Package to npmjs
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # Setup .npmrc file to publish to npm
+
+      # Setup pnpm for faster install
+      - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+
+      # Setup Node.js, and cache dependencies with pnpm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+
+      # Install Dependencies
+      - run: pnpm install
+
+      # Publish to npm
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
