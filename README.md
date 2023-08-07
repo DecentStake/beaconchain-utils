@@ -1,11 +1,17 @@
-# BeaconChain Utils
-[![Module type: CJS](https://img.shields.io/badge/module%20type-cjs-brightgreen)](https://github.com/voxpelli/badges-cjs-esm) ![node 18.x](https://camo.githubusercontent.com/ad21f4a73ca80151771ccbafeea2a7622152ea07cecbd9c92cd7c08137e005a1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6f64652d31382e782d677265656e)
+# `BeaconChain Utils`
+[![Module type: CJS](https://img.shields.io/badge/module%20type-cjs-brightgreen)](https://github.com/voxpelli/badges-cjs-esm) ![node 18.x](https://camo.githubusercontent.com/ad21f4a73ca80151771ccbafeea2a7622152ea07cecbd9c92cd7c08137e005a1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6f64652d31382e782d677265656e)  [![npm version](https://badge.fury.io/js/@decentstake%2Fbeaconchain-utils.svg)](https://badge.fury.io/js/@decentstake%2Fbeaconchain-utils)
 
 This package contains typescript utilities for working with the Eth2 Beacon Chain, wrapping around [@Lodestar](https://github.com/ChainSafe/lodestar) and [@Chainsafe](https://github.com/ChainSafe) packages.
 
-## Examples
+## Installation
 
-Sign and generate a DepositData object with a BIP39 mnemonic:
+```bash
+npm install @decentstake/beaconchain-utils
+```
+
+## Usage
+
+* __Sign and create a DepositData object with a BIP39 mnemonic:__
 
 ```typescript
 import {
@@ -25,7 +31,7 @@ import type {
 import { Chains } from '@decentstake/beaconchain-utils/chainParams';
 
 const mnemonic: string = 'sister protect...'
-const withdrawal_credential: Uint8Array = parseAddressToBLS('0x8FB40436758Ea9e1a8317f54293Af74be02faFf0');
+const withdrawal_credential: Uint8Array = parseAddressToBLS('0x8FB4...');
 const validatorIndex: number = 0;
 
 // Create a new mnemonic.
@@ -50,14 +56,14 @@ const packedDepositData: IPackedDepositData = generatePackedDepositData([deposit
 
 ```
 
-Generates EIP 2335 keystores for a list of validator indices:  
+* __Generate EIP 2335 keystores for a list of validator indices:__  
 Generating 100 keystores takes about 90 seconds. May vary depending on your machine.
 
 ```typescript
 import { SecretProvider } from '@decentstake/beaconchain-utils';
 import type { IKeystore, IKeystoreObject } from '@decentstake/beaconchain-utils/interfaces';
 
-const password: string = "eth1234";
+const password: string = "somePassword";
 const mnemonic: string = 'sister protect...';
 const startIndex = 0;
 const numberOfValidators = 100; //ValidatorIndexes 0-99
@@ -84,7 +90,7 @@ const keystore: IKeystore = await validator.generateKeystore(password);
 
 ```
 
-Derive a validator public and secret key from a BIP39 mnemonic:
+* __Derive a validator public and secret key from a BIP39 mnemonic:__
 
 ```typescript
 import { SecretProvider, hexStringToBytes } from '@decentstake/beaconchain-utils';
