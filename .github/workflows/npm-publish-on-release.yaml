@@ -15,8 +15,6 @@ jobs:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
 
-      - run: cat .npmrc
-
       - run: npm get registry
       # Install Dependencies
       - run: npm ci
