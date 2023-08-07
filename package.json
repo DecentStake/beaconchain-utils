@@ -1,6 +1,6 @@
 {
 	"name": "@decentstake/beaconchain-utils",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "Typescript Ethereum BeaconChain Utils",
 	"repository": "https://github.com/DecentStake/beaconchain-utils.git",
 	"main": "lib/index.js",
