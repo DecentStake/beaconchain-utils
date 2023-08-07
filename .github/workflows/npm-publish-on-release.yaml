@@ -1,4 +1,4 @@
-name: Publish Package to npmjs
+name: Publish beaconchain-utils package to npmjs
 on:
   release:
     types: [published]
